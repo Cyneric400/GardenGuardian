@@ -1,0 +1,4 @@
+# GardenGuardian
+
+## Dependencies
+Streamlit
