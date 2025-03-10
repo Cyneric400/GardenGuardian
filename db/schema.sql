@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS Plant;
+DROP TABLE IF EXISTS Schedule;
+
+CREATE TABLE Plant(
+	id INT PRIMARY KEY,
+	species VARCHAR,
+	schedule INT,
+	FOREIGN KEY (schedule) REFERENCES Schedule
+);
+
+CREATE TABLE Schedule(
+	interval INT PRIMARY KEY
+);
