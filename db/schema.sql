@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS Plant;
 DROP TABLE IF EXISTS Schedule;
 DROP TABLE IF EXISTS Log;
-
 CREATE TABLE Plant(
 	id INT PRIMARY KEY,
 	species VARCHAR,
-	schedule INT
 	--FOREIGN KEY (schedule) REFERENCES Schedule
+	schedule INT,
+	FOREIGN KEY (schedule) REFERENCES Schedule
 );
 
 CREATE TABLE Schedule(
@@ -20,3 +20,4 @@ CREATE TABLE Log(
 	FOREIGN KEY (id) REFERENCES Plant
 );
 	
+);
