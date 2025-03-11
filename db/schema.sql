@@ -4,16 +4,10 @@ DROP TABLE IF EXISTS Log;
 
 CREATE TABLE Plant(
 	id INT PRIMARY KEY,
-	species VARCHAR,
+	species VARCHAR(50),
 	--FOREIGN KEY (schedule) REFERENCES Schedule
 	schedule INT,
 	FOREIGN KEY (schedule) REFERENCES Schedule
-
-CREATE TABLE Plant(
-	id INT PRIMARY KEY,
-	species VARCHAR,
-	schedule INT
-	--FOREIGN KEY (schedule) REFERENCES Schedule
 );
 
 CREATE TABLE Schedule(
@@ -22,8 +16,7 @@ CREATE TABLE Schedule(
 
 CREATE TABLE Log(
 	id INT,
-	day DATE,
+	day VARCHAR(20),
 	PRIMARY KEY (id, day),
 	FOREIGN KEY (id) REFERENCES Plant
-);
 );

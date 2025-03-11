@@ -5,7 +5,15 @@ from plant import Plant
 st.title("GardenGuardian")
 
 st.subheader("Plant Database")
-st.write([p for p in db_man.read_items()])
+plants = db_man.read_items()
+# https://streamly.streamlit.app used for building this section
+cols = st.columns(len(plants))
+for i, p in enumerate(plants):
+    with cols[i]:
+        st.write(f"**{p[1]}**".upper())
+        st.write(f"*Plant #{p[0]}*")
+        st.write(f"Days since last watering: {db_man.read_log(p[0])}")
+        st.write(f"Watering interval: {p[2]} days")
 
 with st.form("add_plant"):
     st.subheader("Add a new plant here")
