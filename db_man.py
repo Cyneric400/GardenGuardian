@@ -32,13 +32,17 @@ def read_log(id: int) -> date:
     with sqlite3.connect("db/db.db") as conn:
         cursor = conn.cursor()
         cursor.execute(sel_str)
-        res = cursor.fetchone()
-        print(res)
-        return res if res != (None,) else 0
+        res = cursor.fetchone()[0]
+        if not res:
+            return date.today()
+        else:
+            res = [int(val) for val in res.split("-")]
+            return date(res[0], res[1], res[2])
 
 
 def update_log(p: Plant):
-    ins_str = f"""INSERT INTO Log VALUES ({p.id}, {p.last_watered}"""
+    print("updating plant")
+    ins_str = f"""INSERT INTO Log VALUES ({p.id}, {p.last_watered})"""
     with sqlite3.connect("db/db.db") as conn:
         cursor = conn.cursor()
         cursor.execute(ins_str)
