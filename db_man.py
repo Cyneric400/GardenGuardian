@@ -42,9 +42,10 @@ def read_log(id: int) -> date:
 
 def update_log(p: Plant):
     print("updating plant")
-    ins_str = f"""INSERT INTO Log VALUES ({p.id}, {p.last_watered})"""
+    ins_str = f"""INSERT INTO Log(id, day) VALUES ({p.id}, '{p.last_watered}')"""
     with sqlite3.connect("db/db.db") as conn:
         cursor = conn.cursor()
+        # print(ins_str)
         cursor.execute(ins_str)
         conn.commit()
 

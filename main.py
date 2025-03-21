@@ -6,14 +6,17 @@ from datetime import date
 
 
 def water_plant(plant: Plant):
-    plant.set_last_watered(date.today())
+    today = date.today()
+    plant.set_last_watered(date(today.year, today.month, today.day))
+    print(plant.last_watered)
+    db_man.update_log(plant)
 
 
 def main():
     st.title("GardenGuardian")
-
     st.subheader("Plant Database")
     plants = db_man.read_items()
+
     # Convert list of tuples to a list of Plant objects
     for i, plant in enumerate(plants):
         plants[i] = Plant(species=plant[1], schedule=plant[2], id=plant[0])
@@ -34,13 +37,10 @@ def main():
                 st.write(f"*Plant #{p.id}*")
                 st.write(f"Days since last watering: {(date.today() - p.last_watered).days}")
                 st.write(f"Watering interval: {p.schedule} days")
-                # Create a centered button
-                # https://discuss.streamlit.io/t/alignment-of-content/29894
-                inner_cols = st.columns([0.13, 0.75, 0.12])
-                with inner_cols[1]:
-                    # Call update log and pass in the current plant.
-                    st.button("Water plant!", key=f"item_button{p.id}", on_click=lambda pl: water_plant(pl))
-    
+                # Call update log and pass in the current plant.
+                st.button("Water plant!", key=f"item_button{p.id}", on_click=water_plant,
+                          use_container_width=True, args=(p,))
+
     with st.form("add_plant"):
         st.subheader("Add a new plant here")
         species = st.text_input(label="Plant species")
