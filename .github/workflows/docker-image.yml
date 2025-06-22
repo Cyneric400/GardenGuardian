@@ -28,5 +28,5 @@ jobs:
       with:
         file: Dockerfile
         push: true
-        tags: ${{ secrets.DCKR_USR }}/deepnexys-streamlit:latest
+        tags: ${{ secrets.DCKR_USR }}/garded-guardian:latest
       
