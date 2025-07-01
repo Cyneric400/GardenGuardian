@@ -3,8 +3,7 @@ LABEL authors="cyneric"
 
 WORKDIR /usr/server
 RUN apk update
-RUN apk add git
-RUN apk add sqlite sqlite-dev
+RUN apk add git cmake sqlite sqlite-dev
 # RUN apt-get update && apt-get install git && apt-get install sqlite3
 RUN git clone https://github.com/Cyneric400/GardenGuardian.git
 WORKDIR /usr/server/GardenGuardian
