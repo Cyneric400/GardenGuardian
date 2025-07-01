@@ -29,4 +29,5 @@ jobs:
         file: Dockerfile
         push: true
         tags: ${{ secrets.DCKR_USR }}/garden-guardian:latest
+        platforms: linux/arm64/v8
       
