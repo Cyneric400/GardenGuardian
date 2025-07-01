@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3-alpine3.22
 LABEL authors="cyneric"
 
 WORKDIR /usr/server
