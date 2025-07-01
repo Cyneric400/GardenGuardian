@@ -2,7 +2,8 @@ FROM python:3-alpine3.22
 LABEL authors="cyneric"
 
 WORKDIR /usr/server
-RUN apt-get update && apt-get install git && apt-get install sqlite3
+RUN apk update && apk add git && apk add sqlite3
+# RUN apt-get update && apt-get install git && apt-get install sqlite3
 RUN git clone https://github.com/Cyneric400/GardenGuardian.git
 WORKDIR /usr/server/GardenGuardian
 RUN python -m pip install -r requirements.txt
