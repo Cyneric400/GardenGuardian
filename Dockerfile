@@ -1,10 +1,10 @@
-FROM python:3-alpine3.22
+FROM python:3-slim-bookworm
 LABEL authors="cyneric"
 
 WORKDIR /usr/server
-RUN apk update
-RUN apk add git cmake sqlite sqlite-dev
-# RUN apt-get update && apt-get install git && apt-get install sqlite3
+# RUN apk update
+# RUN apk add git cmake sqlite sqlite-dev
+RUN apt-get update && apt-get install git && apt-get install sqlite3
 RUN git clone https://github.com/Cyneric400/GardenGuardian.git
 WORKDIR /usr/server/GardenGuardian
 RUN python -m pip install -r requirements.txt
