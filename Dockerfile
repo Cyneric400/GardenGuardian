@@ -9,7 +9,7 @@ RUN git clone https://github.com/Cyneric400/GardenGuardian.git
 WORKDIR /usr/server/GardenGuardian
 RUN python -m pip install -r requirements.txt
 RUN sqlite3 db/db.db -init VTI64_db/schema.sql ".read db/schema.sql"
-WORKDIR /usr/server/GuardenGuardian
+WORKDIR /usr/server/GardenGuardian
 
 CMD ["sh", "-c", "streamlit run main.py"]
 
